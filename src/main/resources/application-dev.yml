@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3308/mercadolivro?createDatabaseIfNotExist=true
+    username: root
+    password: pass
