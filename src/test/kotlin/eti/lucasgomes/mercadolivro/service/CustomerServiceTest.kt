@@ -1,10 +1,8 @@
 package eti.lucasgomes.mercadolivro.service
 
-import eti.lucasgomes.mercadolivro.enums.CustomerStatus
-import eti.lucasgomes.mercadolivro.enums.Role
 import eti.lucasgomes.mercadolivro.exception.NotFoundException
-import eti.lucasgomes.mercadolivro.model.CustomerModel
 import eti.lucasgomes.mercadolivro.repository.CustomerRepository
+import eti.lucasgomes.mercadolivro.util.ModelBuilder.buildCustomer
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -85,21 +83,5 @@ class CustomerServiceTest {
         assertEquals("Customer with id: $id wasn't found", error.error.message)
         assertEquals("ML-301", error.error.code)
         verify(exactly = 1) { customerRepository.findById(id) }
-    }
-
-    private fun buildCustomer(
-        id: Int? = null,
-        name: String = "customer name",
-        email: String = "${UUID.randomUUID()}@email.com",
-        password: String = "password"
-    ): CustomerModel {
-        return CustomerModel(
-            id = id,
-            name = name,
-            email = email,
-            status = CustomerStatus.ATIVO,
-            password = password,
-            roles = setOf(Role.CUSTOMER)
-        )
     }
 }
