@@ -31,9 +31,10 @@ dependencies {
 	implementation("com.auth0:java-jwt:4.4.0")
 
 
-	runtimeOnly("mysql:mysql-connector-java")
+	implementation("mysql:mysql-connector-java:8.0.33")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.mockk:mockk:1.13.5")
 }
 
 tasks.withType<KotlinCompile> {

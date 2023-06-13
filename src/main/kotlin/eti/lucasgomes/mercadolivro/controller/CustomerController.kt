@@ -17,7 +17,7 @@ class CustomerController(
 
     @GetMapping
     fun getCustomers(@RequestParam name: String?): List<CustomerResponse> =
-        customerService.getCustomers(name).map { it.toResponse() }
+        customerService.getAll(name).map { it.toResponse() }
 
     @GetMapping("/{id}")
     @UserCanOnlyAccessTheirOwnResource
